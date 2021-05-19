@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CoeusTweetz</title>
+    <%= yield :head%>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <%= image_tag "logo_coeus.png", size: "125x50" , alt: "coeus logo" %>
+    <p><%= image_url("logo_coeus.png")%></p>
     <%= yield %>
   </body>
 </html>

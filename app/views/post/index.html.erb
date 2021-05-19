@@ -1,4 +1,7 @@
-<h1>Listing Posts</h1>
+<% content_for :head do %>
+  <title>All Posts | Coeus Tweetz</title>
+<% end %>
+<h1>All Posts</h1>
 
 <table>
   <thead>
@@ -15,7 +18,7 @@
       <tr>
         <td><%= post.user.username %></td>
         <td><%= post.content %></td>
-        <td><%= post.created_at.localtime.strftime("%d-%m-%Y %H:%M:%S") %></td>
+        <td><%= distance_of_time_in_words(post.created_at, Time.now, include_seconds: true) %></td>
         <td><%= link_to "Show", post %></td>
         <td><%= link_to "Edit", edit_post_path(post) %></td>
         <td><%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" } %></td>

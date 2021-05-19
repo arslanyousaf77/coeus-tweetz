@@ -1,1 +1,26 @@
-<p><%= @post.content %></p>
+<% content_for :head do %>
+  <title>Post | Coeus Tweetz</title>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Content</th>
+      <th>Published at</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @post.user.username %></td>
+        <td><%= @post.content %></td>
+        <td><%= @post.created_at.localtime.strftime("%d-%m-%Y %H:%M:%S") %></td>
+        <td><%= link_to "Edit", edit_post_path(@post) %></td>
+        <td><%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+  </tbody>
+</table>
+
+<%= link_to "Back", post_index_path %>
