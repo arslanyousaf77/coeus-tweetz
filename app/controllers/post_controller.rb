@@ -1,9 +1,14 @@
 class PostController < ApplicationController
 
-    def list
+    def index
       @posts = Post.all
    end
 
+   # def mine
+   #    @user = User.find(params[:user_id])
+   #    @posts = @user.posts.all
+   # end
+   
    def show
       @post = Post.find(params[:id])
    end
@@ -22,7 +27,7 @@ class PostController < ApplicationController
       if @post.save
          redirect_to :action => 'list'
       else
-         render :action => 'new'
+         render :action => 'create'
       end
    end
    
@@ -38,15 +43,17 @@ class PostController < ApplicationController
       @post = Post.find(params[:id])
       
       if @post.update_attributes(post_param)
-         redirect_to :action => 'show', :id => @post
+         #redirect_to :action => 'show', :id => @post
+         redirect_to(@post)
       else
-         render :action => 'edit'
+         #render :action => 'edit'
+         render "edit"
       end
    end
    
-   def delete
+   def destroy
       Post.find(params[:id]).destroy
-      redirect_to :action => 'list'
+      redirect_to :action => 'index'
    end
    
 end
