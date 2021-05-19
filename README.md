@@ -1,24 +1,8 @@
-# README
+# How to Run the Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* You need to install node_modules using command "npm install"
 
-Things you may want to cover:
+* After installing node_modeules, just run the server by running command "rails server"
 
-* Ruby version
+* http://localhost:3000/post is working.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
