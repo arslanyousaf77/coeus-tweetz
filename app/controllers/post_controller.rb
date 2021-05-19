@@ -47,8 +47,10 @@ class PostController < ApplicationController
    def update
       @post = Post.find(params[:id])
       
-      if @post.update_attributes(post_param)
+      #if @post.update_attributes(post_param)
+      if @post.update_attribute(:content,post_param[:content])
          #redirect_to :action => 'show', :id => @post
+         #flash[:success] = "Post Updated!"
          redirect_to(@post)
       else
          #render :action => 'edit'
