@@ -4,10 +4,10 @@ class PostController < ApplicationController
       @posts = Post.all
    end
 
-   # def mine
-   #    @user = User.find(params[:user_id])
-   #    @posts = @user.posts.all
-   # end
+   def mine
+      @user = User.find(params[:user_id])
+      @posts = @user.posts.all
+   end
    
    def show
       @post = Post.find_by(id: params[:id])
