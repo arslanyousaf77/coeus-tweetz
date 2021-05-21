@@ -16,7 +16,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.user.username %></td>
+        <td><%= post.user.name %></td>
         <td><%= post.content %></td>
         <td><%= distance_of_time_in_words(post.created_at, Time.now, include_seconds: true) %></td>
         <td><%= link_to "Show", post %></td>

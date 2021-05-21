@@ -14,7 +14,7 @@
 
   <tbody>
       <tr>
-        <td><%= @post.user.username %></td>
+        <td><%= @post.user.name %></td>
         <td><%= @post.content %></td>
         <td><%= @post.created_at.localtime.strftime("%d-%m-%Y %H:%M:%S") %></td>
         <td><%= link_to "Edit", edit_post_path(@post) %></td>
