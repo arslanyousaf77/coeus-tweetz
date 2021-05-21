@@ -1,12 +1,12 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
 
     def index
-      @posts = Post.all
+      @posts = current_user.posts.all
    end
 
    def mine
-      @user = User.find(params[:user_id])
-      @posts = @user.posts.all
+   
+      @posts = current_user.posts.all
    end
    
    def show
@@ -19,18 +19,23 @@ class PostController < ApplicationController
    end
   
    def new
-      @post = Post.new
+      @post = current_user.posts.new
+      @path = user_posts_path(current_user)
+
    end
 
    def post_params
-      params.require(:posts).permit(:content, :user_id, :created_at)
+      params.require(:post).permit(:content, :user_id, :created_at, :id)
    end
 
    def create
+    
       @post = Post.new(post_params)
 
+      
       if @post.save
-         redirect_to :action => 'list'
+         flash[:notice] = 'Post was successfully created.'
+         redirect_to user_posts_path(current_user)
       else
          render :action => 'create'
       end
@@ -38,20 +43,19 @@ class PostController < ApplicationController
    
    def edit
       @post = Post.find(params[:id])
+      @path = user_post_path(current_user, @post)
+   
    end
    
-   def post_param
-      params.require(:post).permit(:content, :user_id)
-   end
    
    def update
       @post = Post.find(params[:id])
       
       #if @post.update_attributes(post_param)
-      if @post.update_attribute(:content,post_param[:content])
+      if @post.update(post_params.as_json)
          #redirect_to :action => 'show', :id => @post
          #flash[:success] = "Post Updated!"
-         redirect_to(@post)
+         redirect_to(user_posts_path(current_user ))
       else
          #render :action => 'edit'
          render "edit"
