@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
    load_and_authorize_resource
+   layout "form", only: [:edit, :create, :new]
 
     def index
       #@posts = current_user.posts.all
@@ -7,7 +8,6 @@ class PostsController < ApplicationController
    end
 
    def mine
-   
       @posts = current_user.posts.all
    end
    
