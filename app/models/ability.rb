@@ -6,9 +6,10 @@ class Ability
   def initialize(user)
     can :read, :all # permissions for every user, even if not logged in    
     if user.present?  # additional permissions for logged in users (they can manage their posts)
+      #can :manage, Post
       can :read, Post
       can :create, Post, user_id: user.id 
-      can :edit, Post, user_id: user.id 
+      can :update, Post, user_id: user.id 
       can :destroy, Post, user_id: user.id 
       # if user.admin?  # additional permissions for administrators
       #   can :manage, :all

@@ -69,9 +69,7 @@ class PostsController < ApplicationController
    end
    
    def destroy
-      asad
-      Post.find(params[:id]).destroy
-     
+      Post.find(params[:id]).destroy 
       redirect_to :action => 'index'
    end
    

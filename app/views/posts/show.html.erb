@@ -16,12 +16,12 @@
 </div>
 
 
-<div>
+<div style="float: left; width: auto; margin-right:3px;">
 <%= link_to "Back", user_posts_path(current_user), class:"btn btn-warning btn-sm"%>  
-<% if can? :edit, @post %>
+<% if can? :update, @post %>
   <%= link_to "Edit", edit_user_post_path(@post.user, @post) , class:"btn btn-info btn-sm"%> 
 <%end%>
+</div>
 <% if can? :destroy, @post %>
-  <%= link_to "Delete", user_post_path(current_user, @post), method: :delete, data: { confirm: "Are you sure?" } , class:"btn btn-danger btn-sm"%><div>
-<%end%>
-<div>
+  <%= button_to 'Delete', user_post_path(current_user.id, @post.id), method: :delete, class:"btn btn-danger btn-sm" , :confirm => "Are you sure?" %><br>
+<%end%>   

@@ -4,7 +4,7 @@
 <% end %>
 <div style="float: right;">
 
-<%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-warning" %><br>
+<%= button_to('Logout', destroy_user_session_path, :method => :delete, class:"btn btn-warning") %><br>
 </div>
 <div class="container">
 <h1>All Posts</h1>
@@ -18,9 +18,15 @@
     
   <div class="card-body">
     <h6 class="card-title"><%= post.content %></h6><br><br>
+    <div style="float: left; width: auto; margin-right:3px;">
     <%= link_to "Show", user_post_path(current_user, post), class:"btn btn-warning btn-sm" %>
+
+    <% if can? :update, post %>
+      <%= link_to "Edit", edit_user_post_path(post.user, post) , class:"btn btn-info btn-sm"%> 
+    <%end%>
+  </div>
     <% if can? :destroy, post %>
-      <%= link_to "Delete", user_post_path(current_user.id, post.id), method: :delete , class:"btn btn-danger btn-sm"%>
+    <%= button_to('Delete', user_post_path(current_user.id, post.id), method: :delete, class:"btn btn-danger btn-sm") %><br>
     <%end%>
   </div>
   <div class="card-footer text-muted">
