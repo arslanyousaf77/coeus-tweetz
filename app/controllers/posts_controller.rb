@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+   load_and_authorize_resource
 
     def index
-      @posts = current_user.posts.all
+      #@posts = current_user.posts.all
+      @posts = Post.all
    end
 
    def mine

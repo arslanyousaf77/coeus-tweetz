@@ -34,6 +34,8 @@ gem 'jquery-rails'
 #devise gem
 gem 'devise', '~> 4.2'
 
+#cancancan gem
+gem 'cancancan'
 
 
 group :development, :test do
