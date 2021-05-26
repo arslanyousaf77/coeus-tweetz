@@ -1,11 +1,15 @@
+<% if user_signed_in? %>
 <% content_for :head do %>
   <title>All Posts | Coeus Tweetz</title>
 <% end %>
+<div style="float: right;">
 
+<%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-warning" %><br>
+</div>
 <div class="container">
 <h1>All Posts</h1>
 <p id="notice"><%= notice %></p>
-<%= link_to "New post", new_user_post_path, class:"btn btn-warning" %><br>
+<%= link_to "New post", new_user_post_path(current_user), class:"btn btn-warning" %><br>
 <hr>
 
 <% @posts.each do |post| %>
@@ -14,7 +18,10 @@
     
   <div class="card-body">
     <h6 class="card-title"><%= post.content %></h6><br><br>
-    <%= link_to "Show", user_post_path(post.user, post), class:"btn btn-warning btn-sm" %>
+    <%= link_to "Show", user_post_path(current_user, post), class:"btn btn-warning btn-sm" %>
+    <% if can? :destroy, post %>
+      <%= link_to "Delete", user_post_path(current_user.id, post.id), method: :delete , class:"btn btn-danger btn-sm"%>
+    <%end%>
   </div>
   <div class="card-footer text-muted">
     <%= distance_of_time_in_words(post.created_at, Time.now, include_seconds: true) %>
@@ -25,4 +32,5 @@
 </div>
 <br>
 
+<%end%>
 
