@@ -17,10 +17,10 @@
         <td><%= @post.user.name %></td>
         <td><%= @post.content %></td>
         <td><%= @post.created_at.localtime.strftime("%d-%m-%Y %H:%M:%S") %></td>
-        <td><%= link_to "Edit", edit_post_path(@post) %></td>
-        <td><%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to "Edit", edit_user_post_path(@post.user, @post) %></td>
+        <td><%= link_to "Delete", user_post_path(@post.user, @post), method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
   </tbody>
 </table>
 
-<%= link_to "Show All", post_index_path %>
+<%= link_to "New post", new_user_post_path %>
