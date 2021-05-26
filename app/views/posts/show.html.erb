@@ -1,26 +1,27 @@
 <% content_for :head do %>
   <title>Post | Coeus Tweetz</title>
 <% end %>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Content</th>
-      <th>Published at</th>
-      <th colspan="2">Actions</th>
-    </tr>
-  </thead>
+<br><br>
+<div class="card">
+  <h6 class="card-header"><%= @post.user.name %></h6>
+    
+  <div class="card-body">
+    <h6 class="card-title"><%= @post.content %></h6><br><br>
+  </div>
+  <div class="card-footer text-muted">
+    <%= distance_of_time_in_words(@post.created_at, Time.now, include_seconds: true) %>
+  </div>
+</div>
 
-  <tbody>
-      <tr>
-        <td><%= @post.user.name %></td>
-        <td><%= @post.content %></td>
-        <td><%= @post.created_at.localtime.strftime("%d-%m-%Y %H:%M:%S") %></td>
-        <td><%= link_to "Edit", edit_user_post_path(@post.user, @post) %></td>
-        <td><%= link_to "Delete", user_post_path(@post.user, @post), method: :delete, data: { confirm: "Are you sure?" } %></td>
-      </tr>
-  </tbody>
-</table>
 
-<%= link_to "New post", new_user_post_path %>
+<div>
+<%= link_to "Back", user_posts_path(current_user), class:"btn btn-warning btn-sm"%>  
+<% if can? :edit, @post %>
+  <%= link_to "Edit", edit_user_post_path(@post.user, @post) , class:"btn btn-info btn-sm"%> 
+<%end%>
+<% if can? :destroy, @post %>
+  <%= link_to "Delete", user_post_path(current_user, @post), method: :delete, data: { confirm: "Are you sure?" } , class:"btn btn-danger btn-sm"%><div>
+<%end%>
+<div>

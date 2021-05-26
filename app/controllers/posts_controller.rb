@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
+
    load_and_authorize_resource
+   layout "form", only: [:edit, :create, :new]
 
     def index
-      #@posts = current_user.posts.all
-      @posts = Post.all
+      if user_signed_in?
+         @posts = Post.all.order(created_at: :desc)
+      else
+         redirect_to new_user_session_path
+      end
    end
 
    def mine
-   
       @posts = current_user.posts.all
    end
    
@@ -65,7 +69,9 @@ class PostsController < ApplicationController
    end
    
    def destroy
+      asad
       Post.find(params[:id]).destroy
+     
       redirect_to :action => 'index'
    end
    
