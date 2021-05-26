@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
 }
-# root :to => 'home#index'
+root to: 'posts#index'
 resources :users do
   resources :posts
 end

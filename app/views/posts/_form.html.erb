@@ -1,6 +1,6 @@
 <%= form_with model: @post, url: @path do |form| %>
-  <%= form.text_area :content, size: "50x10" %>
+  <%= form.text_area :content, size: "50x10", class: "form-control", placeholder: "What's on your mind..." %>
   <%= form.hidden_field :user_id, value: @post.user_id %>
   <br>
-  <%= form.submit %>
+  <%= form.submit class: "btn btn-warning" %>
 <% end %>
