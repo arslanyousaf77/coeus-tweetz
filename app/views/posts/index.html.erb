@@ -2,10 +2,8 @@
 <% content_for :head do %>
   <title>All Posts | Coeus Tweetz</title>
 <% end %>
-<div style="float: right;">
 
-<%= button_to('Logout', destroy_user_session_path, :method => :delete, class:"btn btn-warning") %><br>
-</div>
+
 <div class="container">
 <h1>All Posts</h1>
 <p id="notice"><%= notice %></p>
@@ -14,10 +12,10 @@
 
 <% @posts.each do |post| %>
 <div class="card">
-  <h6 class="card-header"><%= post.user.name %></h6>
+  <h6 class="card-header"><b><%= post.user.name.titleize %></b></h6>
     
   <div class="card-body">
-    <h6 class="card-title"><%= post.content %></h6><br><br>
+    <h6 class="card-title"><%= raw(post.content) %></h6><br><br>
     <div style="float: left; width: auto; margin-right:3px;">
     <%= link_to "Show", user_post_path(current_user, post), class:"btn btn-warning btn-sm" %>
 
@@ -26,7 +24,7 @@
     <%end%>
   </div>
     <% if can? :destroy, post %>
-    <%= button_to('Delete', user_post_path(current_user.id, post.id), method: :delete, class:"btn btn-danger btn-sm") %><br>
+    <%= button_to 'Delete', user_post_path(current_user.id, post.id), method: :delete, class:"btn btn-danger btn-sm" %><br>
     <%end%>
   </div>
   <div class="card-footer text-muted">

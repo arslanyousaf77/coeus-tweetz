@@ -10,8 +10,8 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body>
-    <%= image_tag "logo_coeus.png", size: "125x50" , alt: "coeus logo" %>
+  <body style="background-color: #f2ead5">
+  <%= render "shared/navbar" %>
     <%= yield %>
   </body>
 </html>
