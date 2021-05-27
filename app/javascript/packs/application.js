@@ -7,13 +7,13 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import {} from 'jquery-ujs'
 
-// require jquery
-// require jquery_ujs
-require('packs/custom')
-require('packs/custom2')
 require('packs/adminlte.min') 
+window.bsCustomFileInputVar = require('packs/bs-custom-file-input.min') 
+
+$(function () {
+    bsCustomFileInputVar.init();
+  });
 
 Rails.start()
 Turbolinks.start()

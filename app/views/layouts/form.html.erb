@@ -27,18 +27,12 @@
           </div>
         </div>
       </section>
-
-      <!-- Main content -->
       <section class="content">
-        <!-- general form elements -->
-
         <div class="container-fluid">
           <div class="card card-warning">
             <div class="card-header">
               <h3 class="card-title"><%= yield :card_header%></h3>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
             <div class="card-body">
              <%= yield %>
              </div>
@@ -149,28 +143,9 @@
             </form> %>
           </div>
         </div>
-        <!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
+    </section>
     </div>
-
   </div>
-
-
-  <%# <!-- jQuery -->
-  <script src="../../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- bs-custom-file-input -->
-  <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../../dist/js/adminlte.min.js"></script>
-  <!-- Page specific script --> %>
-  <script>
-    $(function () {
-      bsCustomFileInput.init();
-    });
-  </script>
 </body>
 
 </html>
