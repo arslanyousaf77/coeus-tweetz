@@ -1,0 +1,16 @@
+    <% if user_signed_in? %>
+    <%= image_tag "logo_coeus.png", size: "125x50" , alt: "coeus logo" %>
+
+      <div style="float: right;width: auto; ">
+        <%= button_to('Logout', destroy_user_session_path, :method => :delete, class:"btn btn-warning") %>
+      </div>
+      <div style="float: right;width: auto; margin-right:10px;">
+        <%= button_to('Update Profile', edit_user_registration_path,:method => :get, class:"btn btn-warning") %>
+      </div>
+    <%else %>
+      <%= image_tag "logo_coeus.png", size: "125x50" , alt: "coeus logo" %>
+
+      <div style="float: right;width: auto; ">
+        <%= button_to('Sign up', new_user_registration_path,:method => :get, class:"btn btn-warning") %>
+      </div>
+    <%end%>
