@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Api::V1::Base, at: "/"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #devise_for :users

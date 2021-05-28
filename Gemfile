@@ -25,7 +25,17 @@ gem 'activeadmin'
 gem 'draper'
 gem 'pundit'
 
+#gem grape 
+gem 'grape'
+# gem 'rack', '~> 2.0.0'
+#
+# gem 'rack-cors', :require => 'rack/cors'
 
+gem 'grape-active_model_serializers'
+
+#sidekiq gem
+# gem 'sidekiq'
+# gem 'sinatra'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

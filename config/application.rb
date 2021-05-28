@@ -10,6 +10,15 @@ module CoeusTweetz
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    
+    config.middleware.use Rack::Cors do
+      allow do
+        origins "*"
+        resource "*", headers: :any, methods: [:get,
+            :post, :put, :delete, :options]
+      end
+    end
+    #config.active_record.raise_in_transactional_callbacks = true
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -20,3 +29,5 @@ module CoeusTweetz
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+
