@@ -29,7 +29,7 @@ gem 'pundit'
 gem 'grape'
 # gem 'rack', '~> 2.0.0'
 #
-# gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'grape-active_model_serializers'
 
