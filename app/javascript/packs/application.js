@@ -8,9 +8,12 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-require('packs/custom')
-require('packs/custom2')
 require('packs/adminlte.min') 
+window.bsCustomFileInputVar = require('packs/bs-custom-file-input.min') 
+
+$(function () {
+    bsCustomFileInputVar.init();
+  });
 
 Rails.start()
 Turbolinks.start()
